@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quizz</title>
+
+    <link rel="stylesheet" href="quiz_football.css">
+</head>
+<body>
+    <!-- A FAIRE : barre noire + lien vers portfolio-->
+    <header>
+        <!-- A FAIRE-->
+    </header>
+    <main>
+        <div id="pageContainer" class="container-fluid bg-light">
+            <h1>Quiz : <span id="quizTitle">Titre</span></h1>
+            <form id="questionForm" action="" method="POST" onsubmit="return false;">
+         
+                <div id="finalValidZone">
+                    <p id="trialCountZone"></p>
+                    <p>
+                        <input type="checkbox" name="finalValid" id="finalValid">
+                        <label for="finalValid">J'ai répondu à toutes les questions et je suis sûr.e de vouloir valider mes réponses.</label>
+                    </p>
+                </div>
+                <button id="btnValid" type="submit" form="questionForm" disabled> Valider les réponses</button>
+            </form>
+            <div id="score" class="question-card hidden-default">
+                <p id="scoreText">
+                    <p id="scoreComment" class="question-title"></p>
+                    <p id="resultats"></p>
+                    <button id="tryAgainBtn" type="button"> Tenter à nouveau </button>
+                </p>
+            </div>
+        </div> <!-- pageContainer - FIN -->
+    </main>
+    <footer>
+        <!-- A FAIRE-->
+    </footer>
+
+    <script src="quiz_football.js"></script>
+</body>
+</html>

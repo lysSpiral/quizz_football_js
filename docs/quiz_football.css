@@ -1,0 +1,86 @@
+@import url('https://fonts.googleapis.com/css2?family=Yanone+Kaffeesatz&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=KoHo&display=swap');
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    font-family:  'Koho','Segoe UI', Tahoma, Verdana, sans-serif;
+}
+
+main {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items:center; 
+}
+
+#pageContainer {
+    width: 65%;
+    max-width: 900px;
+}
+
+.hidden-default {
+    display: none;
+}
+
+h1 {
+    text-align: center;
+    font-family: 'Yanone Kaffeesatz', 'Segoe UI', sans-serif;
+}
+
+.question-card {
+    background-color:#f2f2f2;
+    margin : 6vh 0;
+    padding: 1vh 2vw 4vh;
+    border-radius: 8px;
+    box-shadow: 2px 2px 7px grey;
+}
+
+.question-title {
+    font-weight: bolder;
+    font-size: 1.25rem;
+}
+
+input[type=radio]{
+    margin-bottom: 1.25vh;
+}
+
+#finalValidZone {
+    text-align: center;
+    margin:2vh auto;
+}
+
+form button {
+    background-color: #8988d4;
+    color:white;
+    outline: none;
+    border: solid 1px black;
+    border-radius: 7px;
+    display: block;
+    margin: 2vh auto;
+    padding: 1vh 2vw;
+    font-size: 1rem;
+    cursor:pointer;
+}
+
+
+form button:disabled,
+#finalValid:disabled {
+    opacity: 0.5;
+    cursor: default;
+}
+
+#score{
+    width: 105%;
+    margin-left: -2.5%;
+    text-align: center;
+}
+
+.right-answer {
+    background-color: mediumseagreen;
+}
+
+.wrong-answer {
+    background-color: salmon;
+}
