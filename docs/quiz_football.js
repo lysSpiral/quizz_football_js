@@ -205,8 +205,9 @@ function validateQuiz(quizCount) {
             hideElement(document.getElementById("score"));
 
         } else {
-            document.getElementById("scoreText").innerHTML = "Vous n'avez pas répondu à toutes les questions"
-            showElement(document.getElementById("score"));
+            // document.getElementById("scoreText").innerHTML = "Vous n'avez pas répondu à toutes les questions"
+            // showElement(document.getElementById("score"));
+            alert("Vous n'avez pas répondu à toutes les questions");
             document.getElementById("finalValid").checked = false;
         }
     }
