@@ -1,4 +1,4 @@
-console.log("connexion à quiz.js");
+console.log("connexion à quiz_football.js");
 
 var trialCount = 0;
 var correctAnswersCount = 0;
@@ -52,7 +52,14 @@ function hideElement(element) {
 }
 
 function printOneQuestion(nb, question) {
-    let questHTML = "<div id=\"question"+nb+"\" class=\"question-card\"> <p class=\"question-title\">"+question.questTitle+"</p> <input type=\"radio\" name=\"q"+nb+"\" id=\"q"+nb+"p1\" value=\""+question.questPropArray[0].propValue+"\"> <label for=\"q"+nb+"p1\"> "+question.questPropArray[0].propText+" </label><br> <input type=\"radio\" name=\"q"+nb+"\" id=\"q"+nb+"p2\" value=\""+question.questPropArray[1].propValue+"\"> <label for=\"q"+nb+"p2\"> "+question.questPropArray[1].propText+"  </label><br> <input type=\"radio\" name=\"q"+nb+"\" id=\"q"+nb+"p3\" value=\""+question.questPropArray[2].propValue+"\"> <label for=\"q"+nb+"p3\"> "+question.questPropArray[2].propText+"  </label><br> <input type=\"radio\" name=\"q"+nb+"\" id=\"q"+nb+"p4\" value=\""+question.questPropArray[3].propValue+"\"> <label for=\"q"+nb+"p4\"> "+question.questPropArray[3].propText+"  </label><br><p id=\"question"+nb+"Indice\" class=\"hidden-default\"><strong>Indice</strong><br>"+question.questClue+"<br><p id=\"question"+nb+"Correction\" class=\"hidden-default\"><strong>Correction</strong><br>"+question.questCorrectionText+"</p> </div>";
+
+    var questHTML = "<div id=\"question"+nb+"\" class=\"question-card\"> <p class=\"question-title\">"+question.questTitle+"</p>";
+
+    for (let i=0; i<question.questPropArray.length; i++) {
+    questHTML += "<input type=\"radio\" name=\"q"+nb+"\" id=\"q"+nb+"p"+(i+1)+"\" value=\""+question.questPropArray[i].propValue+"\"> <label for=\"q"+nb+"p"+(i+1)+"\"> "+question.questPropArray[i].propText+" </label><br>"
+    }
+
+    questHTML += "<br><p id=\"question"+nb+"Indice\" class=\"hidden-default\"><strong>Indice</strong><br>"+question.questClue+"<br><p id=\"question"+nb+"Correction\" class=\"hidden-default\"><strong>Correction</strong><br>"+question.questCorrectionText+"</p> </div>";
 
     document.getElementById("finalValidZone").insertAdjacentHTML("beforebegin", questHTML);
 }
@@ -72,7 +79,7 @@ function getSelectedAnswer(name) {
     //console.log(answersPossible);
     let i = 0
     
-    while (i<3) {
+    while (i<answersPossible.length) {
         if (answersPossible[i].checked) {
             //console.log(answersPossible[i].value);
             return answersPossible[i].value;
@@ -91,7 +98,7 @@ function allQuestionsAnswered(quizCount) {
     while (i< quizCount) {
         let questionName = "q"+(i+1);
         let selectedValue = getSelectedAnswer(questionName);
-       // console.log(selectedValue+" "+typeof(selectedValue));
+        //console.log(selectedValue+" "+typeof(selectedValue));
         if (selectedValue.localeCompare("NO_ANSW") == 0) return false;
         i++;
     }
@@ -198,6 +205,8 @@ function recordAnswers(quiz) {
 }
 
 function validateQuiz(quizCount) {
+    //console.log("validateQuiz "+quizCount);
+    
     if (document.getElementById("finalValid").checked) {
 
         if (allQuestionsAnswered(quizCount)){
@@ -208,6 +217,7 @@ function validateQuiz(quizCount) {
             // document.getElementById("scoreText").innerHTML = "Vous n'avez pas répondu à toutes les questions"
             // showElement(document.getElementById("score"));
             alert("Vous n'avez pas répondu à toutes les questions");
+
             document.getElementById("finalValid").checked = false;
         }
     }
@@ -298,22 +308,22 @@ function reopenQuiz(quizCount) {
     var question5 = new Question(5, "Quel est le nom du stade du club de Wolverhampton ?", propositions5, propositions5[1], correctionText5, clue5);
 /* Question 5 - FIN */
 
-var quizVilles = new Quiz(1,"Football", [question1, question2, question3, question4, question5])
+var quizFootball = new Quiz(1,"Football", [question1, question2, question3, question4, question5])
 
 
 function pageSetUp() {
-    printQuiz(quizVilles);
+    printQuiz(quizFootball);
 
     document.getElementById("trialCountZone").innerHTML = "Il reste 3 tentatives.";
 
     document.getElementById("finalValid").checked = false;
     disableElement(document.getElementById("btnValid"));
 
-    document.getElementById("finalValid").addEventListener('change', () => validateQuiz(quizVilles.quizCount));
+    document.getElementById("finalValid").addEventListener('change', () => validateQuiz(quizFootball.quizCount));
     
-    document.getElementById("btnValid").addEventListener("click", () => recordAnswers(quizVilles));
+    document.getElementById("btnValid").addEventListener("click", () => recordAnswers(quizFootball));
 
-    document.getElementById("tryAgainBtn").addEventListener("click", () => reopenQuiz(quizVilles.quizCount));
+    document.getElementById("tryAgainBtn").addEventListener("click", () => reopenQuiz(quizFootball.quizCount));
     
 }
 
